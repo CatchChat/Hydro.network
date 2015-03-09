@@ -7,6 +7,7 @@
 //
 
 #import "GVUserDefaults+Hydro.h"
+#import "VPNStations.h"
 
 @implementation GVUserDefaults (Hydro)
 
@@ -17,7 +18,7 @@
 
 - (NSDictionary *)setupDefaults {
     return @{
-             @"server": @""
+             @"server": [[VPNStations sharedInstance].stations.firstObject valueForKey:@"host"]
              };
 }
 
