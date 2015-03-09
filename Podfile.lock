@@ -1,0 +1,57 @@
+PODS:
+  - AFNetworking (2.5.0):
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
+  - AFNetworking/NSURLConnection (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.0)
+  - AFNetworking/Security (2.5.0)
+  - AFNetworking/Serialization (2.5.0)
+  - AFNetworking/UIKit (2.5.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - GBPing (1.1.0):
+    - GBToolbox
+  - GBToolbox (3.13.1):
+    - JRSwizzle
+  - GVUserDefaults (1.0.0)
+  - JRSwizzle (1.0)
+  - pop (1.0.7)
+  - SAMTextField (0.1.2)
+  - Shimmer (1.0.2)
+  - SVProgressHUD (1.1.2)
+  - TPKeyboardAvoiding (1.2.4)
+
+DEPENDENCIES:
+  - AFNetworking
+  - GBPing
+  - GVUserDefaults
+  - pop
+  - SAMTextField
+  - Shimmer
+  - SVProgressHUD
+  - TPKeyboardAvoiding
+
+SPEC CHECKSUMS:
+  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  GBPing: 7c009b391f6e8fbe9327d6c6fc7a2bd61775a5c6
+  GBToolbox: 4d5616cb784f646d3594d84e4db72b212b3374bb
+  GVUserDefaults: 696141f019d612e3fb07aae5640e26ccf5678d53
+  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  SAMTextField: 10e2252e15f2e43f67f71a4399928ed10d884076
+  Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  TPKeyboardAvoiding: 925e1e1912597d1a4956697eec3bd9656552153c
+
+COCOAPODS: 0.35.0

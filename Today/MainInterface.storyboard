@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymV-a4-slL" customClass="VPNButton">
+                                <rect key="frame" x="0.0" y="10" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.98431378599999997" green="0.91372555489999996" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ymV-a4-slL" secondAttribute="height" multiplier="1:1" id="GIK-vR-4zB"/>
+                                    <constraint firstAttribute="width" constant="60" id="lkX-c8-Ue3"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedVPNButton:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="j4P-jA-pnL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7r-gs-Jbd" customClass="VPNButton">
+                                <rect key="frame" x="80" y="10" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.98431378599999997" green="0.91372555489999996" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f7r-gs-Jbd" secondAttribute="height" multiplier="1:1" id="poR-62-gW0"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedVPNButton:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="xWs-gw-kJ4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPp-CE-6DJ" customClass="VPNButton">
+                                <rect key="frame" x="236" y="10" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.98431378599999997" green="0.91372555489999996" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JPp-CE-6DJ" secondAttribute="height" multiplier="1:1" id="Lut-eU-v0a"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedVPNButton:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="sy2-g3-cV7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In first" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltf-uL-htX">
+                                <rect key="frame" x="113" y="27" width="95" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="bYY-a5-Lyn"/>
+                                    <constraint firstAttribute="height" constant="26" id="cqI-hq-vh6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="0.66000000000000003" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3H-NV-YH0" customClass="VPNButton">
+                                <rect key="frame" x="156" y="10" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.98431378599999997" green="0.91372555489999996" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="h3H-NV-YH0" secondAttribute="height" multiplier="1:1" id="aco-yD-8OB"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedVPNButton:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="7GH-KW-xEN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="h3H-NV-YH0" secondAttribute="centerY" id="6Av-7l-NYc"/>
+                            <constraint firstAttribute="centerY" secondItem="ltf-uL-htX" secondAttribute="centerY" id="Ajw-yK-yc7"/>
+                            <constraint firstItem="ymV-a4-slL" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="E41-aF-gvl"/>
+                            <constraint firstItem="f7r-gs-Jbd" firstAttribute="width" secondItem="h3H-NV-YH0" secondAttribute="height" multiplier="1:1" id="F38-ou-dPK"/>
+                            <constraint firstAttribute="centerYWithinMargins" secondItem="ymV-a4-slL" secondAttribute="centerYWithinMargins" id="N1Q-kl-Rgb"/>
+                            <constraint firstItem="f7r-gs-Jbd" firstAttribute="width" secondItem="ymV-a4-slL" secondAttribute="width" id="SOY-ji-L89"/>
+                            <constraint firstAttribute="centerYWithinMargins" secondItem="JPp-CE-6DJ" secondAttribute="centerYWithinMargins" id="d1F-MR-Bae"/>
+                            <constraint firstItem="JPp-CE-6DJ" firstAttribute="leading" secondItem="h3H-NV-YH0" secondAttribute="trailing" constant="20" id="ePy-wy-UZw"/>
+                            <constraint firstItem="h3H-NV-YH0" firstAttribute="leading" secondItem="f7r-gs-Jbd" secondAttribute="trailing" constant="16" id="hAM-45-4lP"/>
+                            <constraint firstItem="f7r-gs-Jbd" firstAttribute="leading" secondItem="ymV-a4-slL" secondAttribute="trailing" constant="20" id="iQH-gv-mya"/>
+                            <constraint firstItem="JPp-CE-6DJ" firstAttribute="width" secondItem="f7r-gs-Jbd" secondAttribute="width" id="tPF-Fz-feg"/>
+                            <constraint firstItem="h3H-NV-YH0" firstAttribute="width" secondItem="h3H-NV-YH0" secondAttribute="height" multiplier="1:1" id="uMm-V6-fkw"/>
+                            <constraint firstAttribute="centerYWithinMargins" secondItem="f7r-gs-Jbd" secondAttribute="centerYWithinMargins" id="wDk-oy-LNK"/>
+                            <constraint firstAttribute="centerX" secondItem="ltf-uL-htX" secondAttribute="centerX" id="xgP-RL-ZQv"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="80"/>
+                    <connections>
+                        <outlet property="country1" destination="ymV-a4-slL" id="3gv-OR-lQp"/>
+                        <outlet property="country2" destination="f7r-gs-Jbd" id="geg-Le-yEM"/>
+                        <outlet property="country2SpaceConstraint" destination="hAM-45-4lP" id="0T7-O9-kgd"/>
+                        <outlet property="country3" destination="h3H-NV-YH0" id="2Wr-5n-UBG"/>
+                        <outlet property="country3SpaceConstraint" destination="ePy-wy-UZw" id="pQK-3Z-yjH"/>
+                        <outlet property="country4" destination="JPp-CE-6DJ" id="1Hh-0R-a7L"/>
+                        <outlet property="countrySpaceConstraint" destination="iQH-gv-mya" id="VGP-Q5-O1p"/>
+                        <outlet property="signInLabel" destination="ltf-uL-htX" id="RUw-qr-EBZ"/>
+                        <outletCollection property="vpnButtons" destination="ymV-a4-slL" id="jlg-ff-7Zt"/>
+                        <outletCollection property="vpnButtons" destination="f7r-gs-Jbd" id="GMc-tc-ZKI"/>
+                        <outletCollection property="vpnButtons" destination="h3H-NV-YH0" id="0Lc-eu-iPZ"/>
+                        <outletCollection property="vpnButtons" destination="JPp-CE-6DJ" id="0lw-ea-9T9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="285"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
