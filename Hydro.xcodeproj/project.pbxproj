@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0D3D0B1AADFD2800B83B43 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A0D3D0A1AADFD2800B83B43 /* config.json */; };
+		0A0D3D0C1AADFD2800B83B43 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A0D3D0A1AADFD2800B83B43 /* config.json */; };
 		0A7A30D91A4BB9EE0064D892 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A30D81A4BB9EE0064D892 /* main.m */; };
 		0A7A30DC1A4BB9EE0064D892 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A30DB1A4BB9EE0064D892 /* AppDelegate.m */; };
 		0A7A30DF1A4BB9EE0064D892 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A30DE1A4BB9EE0064D892 /* ViewController.m */; };
@@ -74,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		05B09EC1F2093B5A92BCD391 /* Pods-Hydro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydro.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hydro/Pods-Hydro.release.xcconfig"; sourceTree = "<group>"; };
+		0A0D3D0A1AADFD2800B83B43 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		0A7A30D31A4BB9EE0064D892 /* Hydro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7A30D71A4BB9EE0064D892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7A30D81A4BB9EE0064D892 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 				0A7A30DB1A4BB9EE0064D892 /* AppDelegate.m */,
 				0A7A30DD1A4BB9EE0064D892 /* ViewController.h */,
 				0A7A30DE1A4BB9EE0064D892 /* ViewController.m */,
+				0A0D3D0A1AADFD2800B83B43 /* config.json */,
 				0A7A30E01A4BB9EE0064D892 /* Main.storyboard */,
 				0A7A30E31A4BB9EE0064D892 /* Images.xcassets */,
 				0A7A30E51A4BB9EE0064D892 /* LaunchScreen.xib */,
@@ -433,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A7A30E21A4BB9EE0064D892 /* Main.storyboard in Resources */,
+				0A0D3D0B1AADFD2800B83B43 /* config.json in Resources */,
 				0A7A30E71A4BB9EE0064D892 /* LaunchScreen.xib in Resources */,
 				0A7A30E41A4BB9EE0064D892 /* Images.xcassets in Resources */,
 			);
@@ -451,6 +456,7 @@
 			files = (
 				502BFB6C1A4DA80400D54F77 /* MainInterface.storyboard in Resources */,
 				502BFB7A1A4DAB2900D54F77 /* Images.xcassets in Resources */,
+				0A0D3D0C1AADFD2800B83B43 /* config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

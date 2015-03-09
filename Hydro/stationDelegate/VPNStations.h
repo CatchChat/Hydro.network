@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSArray *stations;
 
+@property (nonatomic, strong) NSDictionary *config;
+
 + (VPNStations *)sharedInstance;
 
 @end

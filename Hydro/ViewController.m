@@ -154,7 +154,7 @@
     NSDictionary *parameters = @{
                                  @"user_token":[GVUserDefaults standardUserDefaults].token
                                  };
-    [manager POST:@"domain" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",[[VPNStations sharedInstance].config valueForKey:@"server"], [[VPNStations sharedInstance].config valueForKey:@"can_do_invite"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
 #ifdef DEBUG
         NSLog(@"JSON: %@", responseObject);
@@ -752,7 +752,7 @@
                                  @"email": email,
                                  @"user_token":[GVUserDefaults standardUserDefaults].token
                                  };
-    [manager POST:@"domain" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",[[VPNStations sharedInstance].config valueForKey:@"server"], [[VPNStations sharedInstance].config valueForKey:@"do_invite"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
 #ifdef DEBUG
         NSLog(@"JSON: %@", responseObject);
@@ -788,7 +788,7 @@
     NSDictionary *parameters = @{
                                  @"user_token":[GVUserDefaults standardUserDefaults].token
                                  };
-    [manager POST:@"domain" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",[[VPNStations sharedInstance].config valueForKey:@"server"], [[VPNStations sharedInstance].config valueForKey:@"validate_user"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
 #ifdef DEBUG
         NSLog(@"JSON: %@", responseObject);

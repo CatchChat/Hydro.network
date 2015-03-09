@@ -26,42 +26,19 @@
     return _sharedInstance;
 }
 
-- (NSArray *)stations
-{
-    if (!_stations) {
-        _stations = @[
-                      @{
-                          @"name":@"Singapore",
-                          @"host":@"domain",
-                          @"short_name":@"flag_sg",
-                          @"x":@0.55,
-                          @"y":@(0.40)
-                          },
-                      @{
-                          @"name":@"HongKong",
-                          @"host":@"domain",
-                          @"short_name":@"HK",
-                          @"x":@0.65,
-                          @"y":@(0.20)
-                          },
-                      @{
-                          @"name":@"Japan",
-                          @"host":@"domain",
-                          @"short_name":@"JP",
-                          @"x":@0.73,
-                          @"y":@(0.15)
-                          },
-                      @{
-                          @"name":@"United States",
-                          @"host":@"domain",
-                          @"short_name":@"flag_us",
-                          @"x":@(-0.5),
-                          @"y":@(0.15)
-                          }
-                      ];
+- (id)init{
+    self = [super init];
+    if (self) {
+        
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"json"];
+        NSData *JSONData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:nil];
+        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableContainers error:nil];
+        self.stations = [jsonObject valueForKey:@"stations"];
+        self.config = jsonObject;
+        
     }
-    
-    return _stations;
+    return self;
 }
+
 
 @end

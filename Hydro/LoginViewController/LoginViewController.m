@@ -10,6 +10,7 @@
 #import <AFNetworking.h>
 #import "GVUserDefaults+Hydro.h"
 #import <SVProgressHUD.h>
+#import "VPNStations.h"
 
 @interface LoginViewController ()
 
@@ -109,7 +110,7 @@
                                  @"email": self.emailtextfield.text,
                                  @"password":self.passwordField.text
                                  };
-    [manager POST:@"domain" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",[[VPNStations sharedInstance].config valueForKey:@"server"], [[VPNStations sharedInstance].config valueForKey:@"server_auth"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
