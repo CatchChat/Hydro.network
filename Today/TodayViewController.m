@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSArray *vpnStations;
 @property (nonatomic, strong) VCIPsecVPNManager *vpnManager;
 
+@property (nonatomic) BOOL isPrepareProfile;
+
 
 @end
 
@@ -191,10 +193,11 @@
 
                 case NEVPNStatusDisconnected:
                     NSLog(@"NEVPNStatusDisconnected");
-
+                    self.currentButton.buttonState = VPNButtonStateNormal;
                     break;
 
                 default:
+                    self.currentButton.buttonState = VPNButtonStateNormal;
                     break;
             }
 
@@ -225,18 +228,21 @@
     NSInteger indexOfButton = [self.vpnButtons indexOfObject:self.currentButton];
 
     NSDictionary *station = self.vpnStations[indexOfButton % self.vpnStations.count];
-
+    if (self.isPrepareProfile) {
+        return;
+    }
+    self.isPrepareProfile = YES;
     [self.vpnManager prepareWithCompletion:^(NSError *error) {
-
-        if (self.vpnManager.vpnManager.connection.status == NEVPNStatusConnected || self.vpnManager.vpnManager.connection.status == NEVPNStatusConnecting) {
+        self.isPrepareProfile = NO;
+        if (self.vpnManager.vpnManager.connection.status != NEVPNStatusDisconnected) {
             [self.vpnManager.vpnManager.connection stopVPNTunnel];
 
             if (isNewButton) {
-                [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@""] andUsername:@"" andPassword:@"" andPSK:@""  andGroupName:@""];
+                [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
             }
 
         } else {
-            [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@""] andUsername:@"" andPassword:@"" andPSK:@""  andGroupName:@"catchteam"];
+                [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
             
             
         }

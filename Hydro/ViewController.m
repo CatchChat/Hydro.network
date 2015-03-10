@@ -44,6 +44,10 @@
 
 @property (nonatomic) BOOL userCanInvite;
 
+@property (nonatomic) BOOL stationShowed;
+
+@property (nonatomic) BOOL isPrepareProfile;
+
 
 - (IBAction)doConnect:(id)sender;
 
@@ -353,19 +357,26 @@
     
     
 //    [self bumbButton];
-    
+    if (self.isPrepareProfile) {
+        return;
+    }
+    self.isPrepareProfile = YES;
     [self.vpnmanager prepareWithCompletion:^(NSError *error) {
-        if (self.vpnmanager.vpnManager.connection.status == NEVPNStatusConnected || self.vpnmanager.vpnManager.connection.status == NEVPNStatusConnecting) {
+        self.isPrepareProfile = NO;
+        if (self.vpnmanager.vpnManager.connection.status != NEVPNStatusDisconnected) {
+            
             [self.vpnmanager.vpnManager.connection stopVPNTunnel];
             
             [self showStations];
+            
+            NSLog(@"Show stations");
             
         }else{
             if (self.domain) {
                 
                 [self hideStations];
                 
-                [self.vpnmanager connectIPSecIKEv2WithHost:self.domain andUsername:@"" andPassword:@"" andPSK:@"" andGroupName:@""];
+                [self.vpnmanager connectIPSecIKEv2WithHost:self.domain andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
             }
         }
         
@@ -451,6 +462,8 @@
     [self hideTableView];
 
     [self showStationView];
+    
+    self.stationShowed = NO;
 }
 
 - (void)showTableView
@@ -476,14 +489,14 @@
     [self showTableView];
 
     [self hideStationView];
+    
+    self.stationShowed = YES;
 }
 
 -(void)relayout
 {
     
     [self.vpnmanager prepareWithCompletion:^(NSError *error) {
-        
-        
 
             if (self.vpnmanager.vpnManager.connection.status == NEVPNStatusConnected) {
 
@@ -521,7 +534,6 @@
             }
             else if(self.vpnmanager.vpnManager.connection.status == NEVPNStatusDisconnected){
 
-                self.stationViewOne.status = @"Disconnected";
                 [UIView transitionWithView:self.mapImageVIew
                                   duration:0.3
                                    options:UIViewAnimationOptionTransitionCrossDissolve
@@ -532,6 +544,12 @@
                 
                 [self.connectButton setTitle:NSLocalizedString(@"Connect", nil) forState:UIControlStateNormal];
                 [self.connectButton setBackgroundImage:[UIImage imageNamed:@"Button + Connect"] forState:UIControlStateNormal];
+                if (![self.stationViewOne.status isEqualToString:@"Disconnected"] && !self.stationShowed) {
+                    [SVProgressHUD showInfoWithStatus:@"Connect Failed"];
+                    [self showStations];
+                }
+
+                self.stationViewOne.status = @"Disconnected";
                 //                [self inactiveButtonStatus:self.connectionButton];
             }
 

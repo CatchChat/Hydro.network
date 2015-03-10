@@ -48,6 +48,7 @@
         
         self.shimmeringView.contentView = self.statusLabel;
         
+        _status = @"Disconnected";
 
 
     }
