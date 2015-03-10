@@ -112,19 +112,26 @@
                                  };
     [manager POST:[NSString stringWithFormat:@"%@%@",[[VPNStations sharedInstance].config valueForKey:@"server"], [[VPNStations sharedInstance].config valueForKey:@"server_auth"]] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // time-consuming task
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
-        });
+
         
         NSString * token = [responseObject valueForKey:@"message"];
         NSString * status = [responseObject valueForKey:@"status"];
         if([status isEqualToString:@"error"]){
-            
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // time-consuming task
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showErrorWithStatus:@"Auth Error"];
+                });
+            });
         }else{
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // time-consuming task
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                });
+            });
             [GVUserDefaults standardUserDefaults].token = token;
             
 
