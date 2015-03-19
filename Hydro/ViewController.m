@@ -363,7 +363,8 @@
     self.isPrepareProfile = YES;
     [self.vpnmanager prepareWithCompletion:^(NSError *error) {
         self.isPrepareProfile = NO;
-        if (self.vpnmanager.vpnManager.connection.status != NEVPNStatusDisconnected) {
+
+        if (self.vpnmanager.vpnManager.connection.status != NEVPNStatusDisconnected && self.vpnmanager.vpnManager.connection.status != NEVPNStatusInvalid) {
             
             [self.vpnmanager.vpnManager.connection stopVPNTunnel];
             
