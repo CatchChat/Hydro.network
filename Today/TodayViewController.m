@@ -153,6 +153,7 @@
                 NSDictionary *station = self.vpnStations[i];
                 if ([station[@"host"] isEqualToString:host]) {
                     self.currentButton = self.vpnButtons[i];
+                    
                     self.currentButton.buttonState = VPNButtonStateConnected;
 
                     break;
@@ -175,21 +176,27 @@
                 case NEVPNStatusConnecting:
                     NSLog(@"NEVPNStatusConnecting");
                     self.currentButton.buttonState = VPNButtonStateConnecting;
+                    break;
 
                 case NEVPNStatusConnected:
                     NSLog(@"NEVPNStatusConnected");
                     self.currentButton.buttonState = VPNButtonStateConnected;
+                    break;
 
                 case NEVPNStatusDisconnecting:
                     NSLog(@"NEVPNStatusDisconnecting");
                     self.currentButton.buttonState = VPNButtonStateConnecting;
+                    break;
 
                 case NEVPNStatusDisconnected:
                     NSLog(@"NEVPNStatusDisconnected");
                     self.currentButton.buttonState = VPNButtonStateNormal;
+                    break;
                     
                 case NEVPNStatusReasserting:
+                    NSLog(@"NEVPNStatusReasserting");
                     self.currentButton.buttonState = VPNButtonStateConnecting;
+                    break;
 
                 default:
                     self.currentButton.buttonState = VPNButtonStateNormal;
