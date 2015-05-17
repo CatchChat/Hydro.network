@@ -27,6 +27,8 @@
 		0A7A311F1A4C658C0064D892 /* GVUserDefaults+Hydro.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A311E1A4C658C0064D892 /* GVUserDefaults+Hydro.m */; };
 		0A7A31221A4C6CAD0064D892 /* locationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A31211A4C6CAD0064D892 /* locationView.m */; };
 		0AD8D6FB1A50AFDA0091E361 /* HydroHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A31041A4BE1180064D892 /* HydroHelper.m */; };
+		0AE52AE31B08E5BE0036D8BB /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE52AE21B08E5BE0036D8BB /* Crashlytics.framework */; };
+		0AE52AE41B08E5BE0036D8BB /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE52AE21B08E5BE0036D8BB /* Crashlytics.framework */; };
 		0AE988081A86E17E005EDBBB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE988071A86E17E005EDBBB /* NetworkExtension.framework */; };
 		0AE988091A86E187005EDBBB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE988071A86E17E005EDBBB /* NetworkExtension.framework */; };
 		502BFB641A4DA80400D54F77 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502BFB631A4DA80400D54F77 /* NotificationCenter.framework */; };
@@ -112,6 +114,7 @@
 		0A7A31201A4C6CAD0064D892 /* locationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = locationView.h; path = Views/locationView.h; sourceTree = "<group>"; };
 		0A7A31211A4C6CAD0064D892 /* locationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = locationView.m; path = Views/locationView.m; sourceTree = "<group>"; };
 		0A7A31241A4DE9EA0064D892 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Today.entitlements; sourceTree = "<group>"; };
+		0AE52AE21B08E5BE0036D8BB /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		0AE988071A86E17E005EDBBB /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		1DAF7C0EC4AA84033D61B006 /* Pods-Hydro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hydro/Pods-Hydro.debug.xcconfig"; sourceTree = "<group>"; };
 		502BFB621A4DA80400D54F77 /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBDACA00AC08543CCA88FA15 /* libPods-Hydro.a in Frameworks */,
+				0AE52AE31B08E5BE0036D8BB /* Crashlytics.framework in Frameworks */,
 				0AE988081A86E17E005EDBBB /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				502BFB641A4DA80400D54F77 /* NotificationCenter.framework in Frameworks */,
+				0AE52AE41B08E5BE0036D8BB /* Crashlytics.framework in Frameworks */,
 				0AE988091A86E187005EDBBB /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +166,7 @@
 		0A7A30CA1A4BB9EE0064D892 = {
 			isa = PBXGroup;
 			children = (
+				0AE52AE21B08E5BE0036D8BB /* Crashlytics.framework */,
 				0A7A30D51A4BB9EE0064D892 /* Hydro */,
 				0A7A30EF1A4BB9EE0064D892 /* HydroTests */,
 				502BFB651A4DA80400D54F77 /* Today */,
@@ -326,6 +332,7 @@
 				0A7A30D11A4BB9EE0064D892 /* Resources */,
 				3C3BEB165317C24CA019BAC7 /* Copy Pods Resources */,
 				502BFB731A4DA80400D54F77 /* Embed App Extensions */,
+				0AE52AE11B08E5A20036D8BB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -463,6 +470,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0AE52AE11B08E5A20036D8BB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run de004490005a062fa95a4d5676a7edbfbe42c582 e6c5af0aba758898c348300b43fb0df9f786dd1222c7b68a38eb37743eb450e2";
+		};
 		3C3BEB165317C24CA019BAC7 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,6 +678,10 @@
 				CODE_SIGN_ENTITLEMENTS = Hydro/Hydro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Hydro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -675,6 +699,10 @@
 				CODE_SIGN_ENTITLEMENTS = Hydro/Hydro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Hydro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -724,6 +752,10 @@
 				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -744,6 +776,10 @@
 				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

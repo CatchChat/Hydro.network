@@ -141,9 +141,11 @@
     _emailTextField = [[SAMTextField alloc] initWithFrame:CGRectZero];
     [_emailTextField setBackground:[UIImage imageNamed:@"EM"]];
     _emailTextField.textColor = [UIColor whiteColor];
-    _emailTextField.font = [UIFont fontWithName:@"Avenir-Medium" size:22.0];
+    _emailTextField.font = [UIFont fontWithName:@"Avenir-Medium" size:20.0];
     _emailTextField.textAlignment = NSTextAlignmentCenter;
     _emailTextField.contentMode = UIViewContentModeScaleAspectFit;
+    _emailTextField.adjustsFontSizeToFitWidth = YES;
+    _emailTextField.minimumFontSize = 12;
     _emailTextField.tintColor = [UIColor whiteColor];
     _emailTextField.returnKeyType = UIReturnKeyDone;
 

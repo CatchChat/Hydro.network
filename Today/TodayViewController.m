@@ -12,6 +12,7 @@
 #import "VCIPsecVPNManager.h"
 #import "VPNButton.h"
 #import "HydroHelper.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface TodayViewController () <NCWidgetProviding>
 
@@ -76,7 +77,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    [Crashlytics startWithAPIKey:@"de004490005a062fa95a4d5676a7edbfbe42c582"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUI) name:NEVPNStatusDidChangeNotification object:nil];
     [self checkStatus];
     
@@ -170,31 +171,25 @@
 
     [self.vpnManager prepareWithCompletion:^(NSError *error) {
 
-
-
             switch (self.vpnManager.vpnManager.connection.status) {
                 case NEVPNStatusConnecting:
                     NSLog(@"NEVPNStatusConnecting");
                     self.currentButton.buttonState = VPNButtonStateConnecting;
 
-                    break;
-
                 case NEVPNStatusConnected:
                     NSLog(@"NEVPNStatusConnected");
                     self.currentButton.buttonState = VPNButtonStateConnected;
 
-                    break;
-
                 case NEVPNStatusDisconnecting:
                     NSLog(@"NEVPNStatusDisconnecting");
-                    self.currentButton.buttonState = VPNButtonStateNormal;
-
-                    break;
+                    self.currentButton.buttonState = VPNButtonStateConnecting;
 
                 case NEVPNStatusDisconnected:
                     NSLog(@"NEVPNStatusDisconnected");
                     self.currentButton.buttonState = VPNButtonStateNormal;
-                    break;
+                    
+                case NEVPNStatusReasserting:
+                    self.currentButton.buttonState = VPNButtonStateConnecting;
 
                 default:
                     self.currentButton.buttonState = VPNButtonStateNormal;
@@ -209,7 +204,6 @@
 #ifdef DEBUG
     NSLog(@"pressedVPNButton");
 #endif
-
 
     BOOL isNewButton = NO;
 
@@ -228,26 +222,32 @@
     NSInteger indexOfButton = [self.vpnButtons indexOfObject:self.currentButton];
 
     NSDictionary *station = self.vpnStations[indexOfButton % self.vpnStations.count];
+    
     if (self.isPrepareProfile) {
         return;
     }
     self.isPrepareProfile = YES;
+    
     [self.vpnManager prepareWithCompletion:^(NSError *error) {
         self.isPrepareProfile = NO;
+        
         if (self.vpnManager.vpnManager.connection.status == NEVPNStatusConnected || self.vpnManager.vpnManager.connection.status == NEVPNStatusConnecting || self.vpnManager.vpnManager.connection.status == NEVPNStatusReasserting || self.vpnManager.vpnManager.connection.status == NEVPNStatusDisconnecting) {
             
             [self.vpnManager.vpnManager.connection stopVPNTunnel];
 
             if (isNewButton) {
-                [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
+                [self connectVPNWithStation:station];
             }
 
         } else {
-                [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
-            
-            
+            [self connectVPNWithStation:station];
         }
+        
     }];
+}
+
+- (void)connectVPNWithStation:(NSDictionary *)station {
+        [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
 }
 
 
