@@ -27,6 +27,11 @@
     
     self.emailtextfield.delegate = self;
     self.passwordField.delegate = self;
+    self.passwordField.adjustsFontSizeToFitWidth = YES;
+    self.passwordField.minimumFontSize = 12;
+    
+    self.emailtextfield.adjustsFontSizeToFitWidth = YES;
+    self.emailtextfield.minimumFontSize = 12;
     
     self.passwordField.textEdgeInsets = UIEdgeInsetsMake(0.0f, 40.0f, 10.0f, 10.0f);
     
