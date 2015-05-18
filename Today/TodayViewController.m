@@ -197,7 +197,11 @@
                     NSLog(@"NEVPNStatusReasserting");
                     self.currentButton.buttonState = VPNButtonStateConnecting;
                     break;
-
+                    
+                case NEVPNStatusInvalid:
+                    NSLog(@"NEVPNStatusReasserting");
+                    self.currentButton.buttonState = VPNButtonStateConnectFailed;
+                    
                 default:
                     self.currentButton.buttonState = VPNButtonStateNormal;
                     break;
@@ -238,16 +242,23 @@
     [self.vpnManager prepareWithCompletion:^(NSError *error) {
         self.isPrepareProfile = NO;
         
-        if (self.vpnManager.vpnManager.connection.status == NEVPNStatusConnected || self.vpnManager.vpnManager.connection.status == NEVPNStatusConnecting || self.vpnManager.vpnManager.connection.status == NEVPNStatusReasserting || self.vpnManager.vpnManager.connection.status == NEVPNStatusDisconnecting) {
+        if (error) {
+            self.currentButton.buttonState = VPNButtonStateConnectFailed;
+        }else {
             
-            [self.vpnManager.vpnManager.connection stopVPNTunnel];
-
-            if (isNewButton) {
+            if (self.vpnManager.vpnManager.connection.status == NEVPNStatusConnected || self.vpnManager.vpnManager.connection.status == NEVPNStatusConnecting || self.vpnManager.vpnManager.connection.status == NEVPNStatusReasserting || self.vpnManager.vpnManager.connection.status == NEVPNStatusDisconnecting) {
+                
+                [self.vpnManager.vpnManager.connection stopVPNTunnel];
+                
+                if (isNewButton) {
+                    [self connectVPNWithStation:station];
+                }
+                
+            } else {
+                [self.vpnManager.vpnManager.connection stopVPNTunnel];
+                
                 [self connectVPNWithStation:station];
             }
-
-        } else {
-            [self connectVPNWithStation:station];
         }
         
     }];
