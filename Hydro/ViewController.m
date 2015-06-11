@@ -30,6 +30,8 @@
 @property (nonatomic)  HydroButton *connectButton;
 @property (nonatomic)  UIImageView *mapImageVIew;
 
+@property (nonatomic)  UILabel *donaterLabel;
+
 @property (nonatomic) VCIPsecVPNManager * vpnmanager;
 
 @property (nonatomic) NSString * domain;
@@ -86,7 +88,19 @@
     //self.stationDelegate = [[stationsDelegate alloc] init];
     self.connectButton = [HydroButton buttonWithType:UIButtonTypeCustom];
     [self.connectButton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Medium" size:17.0]];
+    
+
+    
     self.connectButton.frame = CGRectMake(SCREEN_WIDTH/2.0 - 120 , SCREEN_HEIGHT + 140, 240, 60);
+    
+    self.donaterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (SCREEN_HEIGHT - 160.0) , SCREEN_WIDTH, 30)];
+    self.donaterLabel.alpha = 0;
+    self.donaterLabel.textColor = [UIColor colorWithWhite:1.0 alpha:0.6];
+    self.donaterLabel.textAlignment = NSTextAlignmentCenter;
+    [self.donaterLabel setFont:[UIFont fontWithName:@"Avenir-Medium" size:14.0]];
+    
+    [self.view addSubview:self.donaterLabel];
+    
     [self.connectButton setBackgroundImage:[UIImage imageNamed:@"Button + Connect"] forState:UIControlStateNormal];
     [self.view addSubview:self.connectButton];
     [self.connectButton addTarget:self action:@selector(doConnect:) forControlEvents:UIControlEventTouchUpInside];
@@ -335,7 +349,31 @@
             anim.springSpeed = 12.0;
             anim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
                 if (finished) {
+                    
                     [self relayout];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [UIView animateWithDuration:0.3 animations:^{
+                            
+                            NSString * sponser = [self.stationDic valueForKey:@"sponser"];
+                            
+                            NSString * name = [self.stationDic valueForKey:@"name"];
+                            
+                            if (![sponser isEqualToString:@""]) {
+                                self.donaterLabel.text = [NSString stringWithFormat:@"%@ sponsored by %@", name, sponser];
+                                self.donaterLabel.alpha = 1.0;
+                            } else {
+                                self.donaterLabel.alpha = 0.0;
+                            }
+                            
+                            
+                        }];
+                        
+                    });
+                    
+                    
+                    
                 }
             };
             [self.connectButton.layer pop_addAnimation:anim forKey:@"MoveMap"];
@@ -607,6 +645,23 @@
     [cell makeCheck];
 
     self.stationDic = [self.vpnStations objectAtIndex:indexPath.row];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        NSString * sponser = [self.stationDic valueForKey:@"sponser"];
+        
+        NSString * name = [self.stationDic valueForKey:@"name"];
+        
+        if (![sponser isEqualToString:@""]) {
+            self.donaterLabel.text = [NSString stringWithFormat:@"%@ sponsored by %@", name, sponser];
+            self.donaterLabel.alpha = 1.0;
+        } else {
+            self.donaterLabel.alpha = 0.0;
+        }
+        
+        
+        
+    }];
 }
 
 
