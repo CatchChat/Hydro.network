@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AD9AE3CADFCF220BDF608F8FE2C3794930E9FBE8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "66ECCB7E69137BF099D26851106CA4CBC27A9471" : 0,
+    "AD9AE3CADFCF220BDF608F8FE2C3794930E9FBE8" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CFBCE743-3F8E-41D8-8437-8AABAB64B189",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "66ECCB7E69137BF099D26851106CA4CBC27A9471" : "Hydro",
+    "AD9AE3CADFCF220BDF608F8FE2C3794930E9FBE8" : "Hydro_Opensource"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Hydro",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Hydro.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CatchChat\/Hydro.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "66ECCB7E69137BF099D26851106CA4CBC27A9471"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CatchChat\/Hydro.network.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AD9AE3CADFCF220BDF608F8FE2C3794930E9FBE8"
+    }
+  ]
+}
