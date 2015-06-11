@@ -25,7 +25,6 @@
 
 @property (nonatomic) BOOL isPrepareProfile;
 
-
 @end
 
 @implementation TodayViewController
@@ -248,14 +247,17 @@
             
             if (self.vpnManager.vpnManager.connection.status == NEVPNStatusConnected || self.vpnManager.vpnManager.connection.status == NEVPNStatusConnecting || self.vpnManager.vpnManager.connection.status == NEVPNStatusReasserting || self.vpnManager.vpnManager.connection.status == NEVPNStatusDisconnecting) {
                 
-                [self.vpnManager.vpnManager.connection stopVPNTunnel];
+#ifdef DEBUG
+                NSLog(@"Dicsonnect VPN");
+#endif
                 
-                if (isNewButton) {
-                    [self connectVPNWithStation:station];
-                }
+                [self.vpnManager.vpnManager.connection stopVPNTunnel];
                 
             } else {
-                [self.vpnManager.vpnManager.connection stopVPNTunnel];
+                
+#ifdef DEBUG
+                NSLog(@"Connect VPN");
+#endif
                 
                 [self connectVPNWithStation:station];
             }

@@ -110,17 +110,17 @@ static NSString * const IKEv2ServiceName = @"Hydro IKEv2 VPN";
     //    connectRule.interfaceTypeMatch = NEOnDemandRuleInterfaceTypeCellular | NEOnDemandRuleInterfaceTypeWiFi;
     //
     //
-    NEOnDemandRuleEvaluateConnection * domainRule = [NEOnDemandRuleEvaluateConnection new];
-    
-    NEEvaluateConnectionRule * domainMatch = [[NEEvaluateConnectionRule alloc]
-                                              initWithMatchDomains:
-                                              @[@"*.twitter.com", @"www.twitter.com", @"*.google.com", @"*.google.com.hk", @"*.youtube.com",
-                                                @"*.googleusercontent.com",@"*.gstatic.com", @"*.ggpht.com",@"*.appspot.com", @"*.googleapis.com", @"*.google.cn",
-                                                @"*.fbcdn.net", @"*.staticflickr.com", @"*.twimg.com", @"*.ytimg.com", @"*.feedly.com",@"*.tinypic.com", @"*.instagram.com"] andAction:NEEvaluateConnectionRuleActionConnectIfNeeded];
-    domainRule.connectionRules = @[domainMatch];
-    
-    
-    [_vpnManager setOnDemandRules:@[domainRule]];
+//    NEOnDemandRuleEvaluateConnection * domainRule = [NEOnDemandRuleEvaluateConnection new];
+//    
+//    NEEvaluateConnectionRule * domainMatch = [[NEEvaluateConnectionRule alloc]
+//                                              initWithMatchDomains:
+//                                              @[@"*.twitter.com", @"www.twitter.com", @"*.google.com", @"*.google.com.hk", @"*.youtube.com",
+//                                                @"*.googleusercontent.com",@"*.gstatic.com", @"*.ggpht.com",@"*.appspot.com", @"*.googleapis.com", @"*.google.cn",
+//                                                @"*.fbcdn.net", @"*.staticflickr.com", @"*.twimg.com", @"*.ytimg.com", @"*.feedly.com",@"*.tinypic.com", @"*.instagram.com"] andAction:NEEvaluateConnectionRuleActionConnectIfNeeded];
+//    domainRule.connectionRules = @[domainMatch];
+//    
+//    
+//    [_vpnManager setOnDemandRules:@[domainRule]];
     
     //    _vpnManager.onDemandEnabled = YES;
     
