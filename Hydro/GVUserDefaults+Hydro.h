@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSString *token;
 
+@property (nonatomic) BOOL ikev2;
+
 @property (nonatomic, strong) NSDictionary *currentStationDict;
 
 @end

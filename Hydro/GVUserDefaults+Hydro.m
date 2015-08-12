@@ -14,6 +14,7 @@
 @dynamic email;
 @dynamic token;
 @dynamic server;
+@dynamic ikev2;
 @dynamic currentStationDict;
 
 - (NSDictionary *)setupDefaults {

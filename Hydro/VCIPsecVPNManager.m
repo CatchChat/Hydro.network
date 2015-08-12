@@ -297,7 +297,7 @@ static NSString * const IKEv2ServiceName = @"Hydro IKEv2 VPN";
     _vpnManager.protocol = p;
     _vpnManager.localizedDescription = IKEv1ServiceName;
     _vpnManager.enabled = YES;
-    _vpnManager.onDemandEnabled = YES;
+    _vpnManager.onDemandEnabled = NO;
 
 
     NEOnDemandRuleConnect *connectRule = [NEOnDemandRuleConnect new];

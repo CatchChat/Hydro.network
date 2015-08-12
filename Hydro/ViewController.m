@@ -156,6 +156,45 @@
     
 }
 
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self resignFirstResponder];
+    [super viewWillDisappear:animated];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        NSLog(@"Change IKEV");
+        
+        NSString * message = @"Choose The Encrypt Protocal";
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Make A Change" message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ikev2 = [UIAlertAction actionWithTitle:@"IKEv2" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [GVUserDefaults standardUserDefaults].ikev2 = YES;
+        }];
+        
+        UIAlertAction* ikev1 = [UIAlertAction actionWithTitle:@"IKEv1" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [GVUserDefaults standardUserDefaults].ikev2 = NO;
+        }];
+        
+        [alertController addAction:ikev2];
+        [alertController addAction:ikev1];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -415,7 +454,13 @@
                 
                 [self hideStations];
                 
-                [self.vpnmanager connectIPSecIKEv2WithHost:self.domain andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
+                
+                if ([GVUserDefaults standardUserDefaults].ikev2) {
+                    [self.vpnmanager connectIPSecIKEv2WithHost:self.domain andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
+                } else {
+                    [self.vpnmanager connectIPSecWithHost:self.domain andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"]  andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
+                }
+
             }
         }
         
