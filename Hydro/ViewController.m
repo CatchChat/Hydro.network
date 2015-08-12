@@ -188,6 +188,12 @@
             [GVUserDefaults standardUserDefaults].ikev2 = NO;
         }];
         
+        
+        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.catchlab.TodayExtensionSharingDefaults"];
+        
+        [sharedDefaults setBool:[GVUserDefaults standardUserDefaults].ikev2 forKey:@"ikev2"];
+        [sharedDefaults synchronize];   // (!!) This is crucial.
+        
         [alertController addAction:ikev2];
         [alertController addAction:ikev1];
         

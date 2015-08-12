@@ -21,6 +21,7 @@
 @property (nonatomic, strong) VPNButton *currentButton;
 
 @property (nonatomic, strong) NSArray *vpnStations;
+
 @property (nonatomic, strong) VCIPsecVPNManager *vpnManager;
 
 @property (nonatomic) BOOL isPrepareProfile;
@@ -58,6 +59,7 @@
 {
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.catchlab.TodayExtensionSharingDefaults"];
     BOOL active = [defaults boolForKey:@"ActiveToday"];
+    
     if (active) {
         self.country1.hidden = NO;
         self.country2.hidden = NO;
@@ -267,7 +269,16 @@
 }
 
 - (void)connectVPNWithStation:(NSDictionary *)station {
+    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.catchlab.TodayExtensionSharingDefaults"];
+    BOOL active = [defaults boolForKey:@"ikev2"];
+    
+    if (active) {
         [self.vpnManager connectIPSecIKEv2WithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"] andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
+    } else {
+        [self.vpnManager connectIPSecWithHost:[station valueForKey:@"host"] andUsername:[[VPNStations sharedInstance].config valueForKey:@"username"] andPassword:[[VPNStations sharedInstance].config valueForKey:@"password"] andPSK:[[VPNStations sharedInstance].config valueForKey:@"psk"]  andGroupName:[[VPNStations sharedInstance].config valueForKey:@"groupname"]];
+    }
+
 }
 
 
